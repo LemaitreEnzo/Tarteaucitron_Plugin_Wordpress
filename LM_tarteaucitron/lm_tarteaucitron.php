@@ -61,7 +61,13 @@ function lm_enqueue_tarteaucitron_script()
 
         (tarteaucitron.job = tarteaucitron.job || []).push("m6meteo");
 
-        (tarteaucitron.job = tarteaucitron.job || []).push("amazon");
+        tarteaucitron.user.actid = "actid";
+        (tarteaucitron.job = tarteaucitron.job || []).push("activecampaign");
+
+        (tarteaucitron.job = tarteaucitron.job || []).push("twitter");
+        
+        (tarteaucitron.job = tarteaucitron.job || []).push("discord");
+
         '
 
     );
@@ -180,13 +186,23 @@ function m6_meteo()
 }
 add_action('wp_footer', 'm6_meteo');
 
-function instagram()
+function linkedIn()
 {
     echo '<span class="tacLinkedin"></span><script type="IN/Share" data-counter="top"></script>';
 }
-add_action('wp_footer', 'instagram');
+add_action('wp_footer', 'linkedIn');
 
-function amazon(){
-    echo '<div class="amazon_product" amazonid="1740576742" productid="B0CJ2STZGN"></div>';
+
+
+function twitter()
+{
+    echo '<span class="tacTwitter"></span><a href="https://twitter.com/share" class="twitter-share-button" data-via="twitter_username" data-count="vertical" data-dnt="true"></a>';
 }
-add_action('wp_footer', 'amazon');
+add_action('wp_footer', 'twitter');
+
+
+function discord()
+{
+    echo '<div class="discord_widget" width="width" height="height" guildID="guildID"></div>';
+}
+add_action('wp_footer', 'discord');
